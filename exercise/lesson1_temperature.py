@@ -1,17 +1,17 @@
 import numpy as np
 
 def relu(x):
-    if(x<0):
-        return 0
-    return x
+    return np.maximum(0, x)
 
-def n1(x):
-    return x - 26
+w1 = 1
+b1 = -26
+w2 = -1
+b2 = 18
+x = np.arange(10, 34, 4)
 
-def n2(x):
-    return 18 - x
+h1 = relu(w1 * x + b1)
+h2 = relu(w2 * x + b2)
 
-def y_hat(x):
-    return relu(n1(x))+relu(n2(x))
+y_hat = h1 + h2
 
-print(y_hat(15),y_hat(22),y_hat(30))
+print(y_hat)
