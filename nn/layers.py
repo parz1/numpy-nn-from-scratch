@@ -26,7 +26,11 @@ class Linear:
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         """Cache x, then return affine output; omit the bias if self.b is None."""
-        # TODO: Cache the input and compute the batched affine transformation.
+        self._x = x
+        z = x @ self.W
+        if self.b is not None:
+            z = z + self.b
+        return z
 
     def backward(self, grad_output: np.ndarray) -> np.ndarray:
         """Store dW/db and return dx with the cached input's shape.
